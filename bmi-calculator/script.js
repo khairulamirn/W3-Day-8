@@ -30,7 +30,6 @@ const heightInput = document.querySelector("#height");
 const bmiCategory = document.querySelector("#bmiCategory");
 const bmiValue = document.querySelector("#bmiValue");
 
-
 weight.addEventListener("input" , function (e) {
     console.log(e.target.value);
 });
@@ -43,9 +42,9 @@ button.addEventListener("click", function () {
     console.log("Button clicked");
 
 const weight = weightInput.value;
-const height = heightInput.value;
+const height = heightInput.value / 100;
 
-let bmi = (weight / (height*height));
+let bmi = (weight / (height*height)); 
     if (bmi < 15) {
         category = "Very severely underweight"; 
     } else if (bmi >= 15 && bmi < 16) {
@@ -62,10 +61,12 @@ let bmi = (weight / (height*height));
         category = "Obese Class II (Severely obese)";
     } else {
         category = "Obese Class III (Very severely obese)";
-    }
+    } 
+    console.log(bmi);
 
+const roundedBmi = Math.round(bmi * 100) / 100;
+console.log(roundedBmi);
 bmiCategory.innerText = category; 
-bmiValue.innerText = bmi;
-
-}) 
+bmiValue.innerText = roundedBmi;
+});
 
